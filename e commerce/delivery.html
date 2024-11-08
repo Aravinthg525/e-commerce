@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delivery Status</title>
+   
+</head>
+<body>
+    <style>
+
+        body {
+            background-color: #f8f9fa;
+        }
+        .status-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .status-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .status-item.completed {
+            border-color: #28a745;
+            background-color: #d4edda;
+        }
+        .status-item.in-progress {
+            border-color: #ffc107;
+            background-color: #fff3cd;
+        }
+        .status-item.pending {
+            border-color: #dc3545;
+            background-color: #f8d7da;
+        }
+    </style>
+
+<div class="status-container">
+    <h2 class="text-center">Delivery Status</h2>
+    <div id="statusList"></div>
+</div>
+
+<script>
+    // Sample delivery status data
+    const deliveryData = [
+        { id: 1, status: 'completed', message: 'Your order has been delivered!' },
+        { id: 2, status: 'in-progress', message: 'Your order is on the way.' },
+        { id: 3, status: 'pending', message: 'Your order is being processed.' }
+    ];
+
+    // Function to render delivery status
+    function renderDeliveryStatus() {
+        const statusList = document.getElementById('statusList');
+        statusList.innerHTML = ''; // Clear previous content
+
+        deliveryData.forEach(item => {
+            const statusItem = document.createElement('div');
+            statusItem.className = `status-item ${item.status}`;
+            statusItem.innerHTML = `
+                <h5>Order ID: ${item.id}</h5>
+                <p>${item.message}</p>
+            `;
+            statusList.appendChild(statusItem);
+        });
+    }
+
+    // Call the function to render the status
+    renderDeliveryStatus();
+</script>
+
+
+</body>
+</html>
